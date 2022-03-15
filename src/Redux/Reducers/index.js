@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import rocketReducer from './RocketReducer';
-import missionsReducer from './MissionReducer';
+import missionReducer from './MissionReducer';
 
 const reducers = combineReducers({
   rocket: rocketReducer,
-  missionsReducer,
- 
+  missionReducer,
+
 });
 
 export default reducers;
