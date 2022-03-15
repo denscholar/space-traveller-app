@@ -10,9 +10,11 @@ const initialState = {
 const rocketReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.SET_ROCKET_DATA:
-      return { ...state, products: payload };
+      return { ...state, rockets: payload };
 
     default:
-      break;
+      return state;
   }
 };
+
+export default rocketReducer;
