@@ -1,6 +1,22 @@
+.nav-container {
+  /* padding: 1rem 3.5rem; */
+  border-bottom: 1px solid rgb(80, 79, 79);
+  margin: 1rem 2.5rem;;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.nav-list li {
+  list-style: none;
+}
+
 .nav-list a {
   text-decoration: none;
-  padding-left: 10px;
+  list-style: none;
 }
 
 .nav-list a.active {

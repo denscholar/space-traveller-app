@@ -1,7 +1,9 @@
-import React from 'react';
+import rocketHooks from '../../hooks/Rockets';
 
-const Rockets = () => (
-  <div>Rockets</div>
-);
-
+const Rockets = () => {
+  rocketHooks();
+  return (
+    <div>Rockets</div>
+  );
+};
 export default Rockets;
