@@ -30,7 +30,14 @@ const Missions = () => {
             <tr key={mission.id} id={mission.id}>
               <td className="mission_name">{mission.name}</td>
               <td className="description">{mission.description}</td>
-              <td className="member_cnt" />
+              <td className="member_cnt">
+                {
+                mission.reserved
+                  ? <span className="active_member">Active member</span>
+                  : <span className="inactive_member">NOT A MEMBER</span>
+              }
+
+              </td>
               <td className="btn_ctn">
                 {
                 mission.reserved
