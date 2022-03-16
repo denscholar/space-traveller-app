@@ -1,10 +1,26 @@
 import axios from 'axios';
 
 const SET_MISSIONS_DATA = 'SET_MISSIONS_DATA';
+const JOIN_MISSION = 'JOIN_MISSION';
+const LEAVE_MISSION = 'LEAVE_MISSION';
 
 const initialState = {
-  missions: [],
+  missions: {
+    id: 2022,
+    name: 'KOBRA',
+    description: 'The mission',
+  },
 };
+
+export const joinMission = (payload) => ({
+  type: JOIN_MISSION,
+  payload,
+});
+
+export const leaveMission = (payload) => ({
+  type: LEAVE_MISSION,
+  payload,
+});
 
 export const missionArr = (response) => {
   response.map((mission) => (
