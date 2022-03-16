@@ -1,20 +1,14 @@
 import axios from 'axios';
 
 const SET_MISSIONS_DATA = 'SET_MISSIONS_DATA';
-const JOIN_MISSION = 'JOIN_MISSION';
-const LEAVE_MISSION = 'LEAVE_MISSION';
+const RESERVE_MISSION = 'RESERVE_MISSION';
 
 const initialState = {
   missions: [],
 };
 
-export const joinMission = (payload) => ({
-  type: JOIN_MISSION,
-  payload,
-});
-
-export const leaveMission = (payload) => ({
-  type: LEAVE_MISSION,
+export const missionReserve = (payload) => ({
+  type: RESERVE_MISSION,
   payload,
 });
 
@@ -39,9 +33,14 @@ export const setMission = () => async (dispatch) => {
 
 const missionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_MISSIONS_DATA:
+    case SET_MISSIONS_DATA: {
       return { ...action.payload };
-
+    }
+    case RESERVE_MISSION: {
+      const newState = state.missions.map((mission) => (mission.id !== action.payload
+        ? mission : { ...mission, reserved: !mission.reserved }));
+      return { ...state, missions: newState };
+    }
     default:
       return state;
   }

@@ -1,30 +1,22 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMission } from '../../Redux/Missions/MissionReducer';
+import { missionReserve, setMission } from '../../Redux/Missions/MissionReducer';
 
 const Missions = () => {
   const { missions } = useSelector((state) => state.missionReducer);
   const dispatch = useDispatch();
+
   useEffect(async () => {
     if (!missions.length) {
-      await dispatch(setMission());
+      dispatch(setMission());
     }
   }, []);
 
-  const arrayCheck = () => {
-    console.log(missions);
-    if (missions.length > 0) {
-      return (missions.map((mission) => (
-        <tr key={mission.id} id={mission.id}>
-          <td>{mission.name}</td>
-          <td>{mission.description}</td>
-          <td><span>NOT A MEMBER</span></td>
-          <td><button type="button">Join Mission</button></td>
-        </tr>
-      )));
-    }
-    return <tr><td>error</td></tr>;
+  const reserveHandler = (payload) => {
+    dispatch(missionReserve(payload));
   };
+
+  console.log(missions);
   return (
     <div>
       <table>
@@ -34,7 +26,20 @@ const Missions = () => {
             <th>Description</th>
             <th>Status</th>
           </tr>
-          {arrayCheck()}
+          {(missions.map((mission) => (
+            <tr key={mission.id} id={mission.id}>
+              <td className="mission_name">{mission.name}</td>
+              <td className="description">{mission.description}</td>
+              <td className="member_cnt" />
+              <td className="btn_ctn">
+                {
+                mission.reserved
+                  ? <button type="button" className="cancel_btn" onClick={() => { reserveHandler(mission.id); }}>Leave Mission</button>
+                  : <button type="button" className="reserve_btn" onClick={() => { reserveHandler(mission.id); }}>Join Mission</button>
+              }
+              </td>
+            </tr>
+          )))}
         </tbody>
       </table>
     </div>
