@@ -1,10 +1,9 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { Row, Col, Badge } from 'react-bootstrap';
-// import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import Button from '../Button/Button';
-import { reserveRocketAction } from '../../Redux/Rockets/Rockets';
+import { reserveRocketAction, cancelRocketAction } from '../../Redux/Rockets/Rockets';
 
 const Rocket = () => {
   const rockets = useSelector((state) => state.rocketsReducer);
@@ -20,14 +19,14 @@ const Rocket = () => {
         <Col sm={8} style={{ marginButtom: '15px' }}>
           <h4>{name}</h4>
           <p>
-            {reserved && (<Badge text={reserved} />)}
+            {reserved && (<Badge style={{ marginRight: '10px' }} bg="warning" text="dark">Reserved</Badge>)}
             {description}
           </p>
           {!reserved && (
           <Button text="Reserve Rocket" click={() => reserveRocketAction(id)} id={id} buttonClass="btn btn-primary" />
           )}
           {reserved && (
-          <Button text="Cancel Rerservation" click={() => reserveRocketAction(id)} id={id} buttonClass="btn btn-outline-secondary" />
+          <Button text="Cancel Rerservation" click={() => cancelRocketAction(id)} id={id} buttonClass="btn btn-outline-secondary" />
           )}
         </Col>
       </Row>
