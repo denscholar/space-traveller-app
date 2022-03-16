@@ -5,11 +5,7 @@ const JOIN_MISSION = 'JOIN_MISSION';
 const LEAVE_MISSION = 'LEAVE_MISSION';
 
 const initialState = {
-  missions: {
-    id: 2022,
-    name: 'KOBRA',
-    description: 'The mission',
-  },
+  missions: [],
 };
 
 export const joinMission = (payload) => ({
@@ -34,17 +30,17 @@ export const missionArr = (response) => {
 };
 
 export const setMission = () => async (dispatch) => {
-  const response = axios.get('https://api.spacexdata.com/v3/missions');
+  const { data } = await axios.get('https://api.spacexdata.com/v3/missions');
   dispatch({
     type: SET_MISSIONS_DATA,
-    payload: missionArr(response),
+    payload: missionArr(data),
   });
 };
 
 const missionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MISSIONS_DATA:
-      return { ...action, mission: payload };
+      return { ...action.payload };
 
     default:
       return state;
