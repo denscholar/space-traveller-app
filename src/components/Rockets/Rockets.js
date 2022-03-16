@@ -1,9 +1,14 @@
+/* eslint-disable max-len */
+import { Container } from 'react-bootstrap';
 import rocketHooks from '../../hooks/Rockets';
+import Rocket from '../Rocket/Rocket';
 
 const Rockets = () => {
   rocketHooks();
   return (
-    <div>Rockets</div>
+    <Container>
+      <Rocket />
+    </Container>
   );
 };
 export default Rockets;
