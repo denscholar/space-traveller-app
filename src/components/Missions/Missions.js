@@ -28,21 +28,21 @@ const Missions = () => {
           </tr>
           {(missions.map((mission) => (
             <tr key={mission.id} id={mission.id}>
-              <td className="mission_name">{mission.name}</td>
-              <td className="description">{mission.description}</td>
-              <td className="member_cnt">
+              <td>{mission.name}</td>
+              <td>{mission.description}</td>
+              <td>
                 {
                 mission.reserved
-                  ? <span className="active_member">Active member</span>
-                  : <span className="inactive_member">NOT A MEMBER</span>
+                  ? <span>Active member</span>
+                  : <span>NOT A MEMBER</span>
               }
 
               </td>
-              <td className="btn_ctn">
+              <td>
                 {
                 mission.reserved
-                  ? <button type="button" className="cancel_btn" onClick={() => { reserveHandler(mission.id); }}>Leave Mission</button>
-                  : <button type="button" className="reserve_btn" onClick={() => { reserveHandler(mission.id); }}>Join Mission</button>
+                  ? <button type="button" onClick={() => { reserveHandler(mission.id); }}>Leave Mission</button>
+                  : <button type="button" onClick={() => { reserveHandler(mission.id); }}>Join Mission</button>
               }
               </td>
             </tr>
