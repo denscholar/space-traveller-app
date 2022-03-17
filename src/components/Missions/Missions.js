@@ -1,5 +1,10 @@
 import { useEffect } from 'react';
+import {
+  Badge, Container, Table,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '../Button/Button';
+import './Missions.css';
 import { missionReserve, setMission } from '../../Redux/Missions/MissionReducer';
 
 const Missions = () => {
@@ -18,38 +23,46 @@ const Missions = () => {
 
   console.log(missions);
   return (
-    <div>
-      <table>
-        <tbody>
+    <Container>
+      <Table
+        striped
+        bordered
+        style={{
+          textAlign: 'left',
+        }}
+      >
+        <thead>
           <tr>
-            <th>Mission</th>
-            <th>Description</th>
-            <th>Status</th>
+            <th><h5>Mission</h5></th>
+            <th><h5>Description</h5></th>
+            <th><h5>Status</h5></th>
           </tr>
+        </thead>
+        <tbody style={{ alignItems: 'center' }}>
           {(missions.map((mission) => (
             <tr key={mission.id} id={mission.id}>
-              <td>{mission.name}</td>
-              <td>{mission.description}</td>
+              <td><h5>{mission.name}</h5></td>
+              <td style={{ width: '90%' }}>{mission.description}</td>
               <td>
                 {
                 mission.reserved
-                  ? <span>Active member</span>
-                  : <span>NOT A MEMBER</span>
+                  ? <h5><Badge bg="info">Active member</Badge></h5>
+                  : <h5><Badge bg="secondary">NOT A MEMBER</Badge></h5>
               }
 
               </td>
               <td>
                 {
                 mission.reserved
-                  ? <button type="button" onClick={() => { reserveHandler(mission.id); }}>Leave Mission</button>
-                  : <button type="button" onClick={() => { reserveHandler(mission.id); }}>Join Mission</button>
-              }
+                  ? <Button style={{ width: '10vw' }} text="Leave Mission" click={() => { reserveHandler(mission.id); }} buttonClass="btn btn-outline-danger bg-light" />
+                  : <Button style={{ width: '10vw' }} text="Join Mission" click={() => { reserveHandler(mission.id); }} buttonClass="btn btn-outline-secondary bg-light" />
+            }
               </td>
             </tr>
           )))}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </Container>
   );
 };
 export default Missions;
