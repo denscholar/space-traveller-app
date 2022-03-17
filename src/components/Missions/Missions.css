@@ -1,4 +1,9 @@
-.btn{
+.btn {
   width: 8vw;
-  padding: 0.5rem!important;
+  padding: 0.5rem !important;
+}
+
+.align-item {
+  top: 50%;
+  left: 50%;
 }

@@ -46,8 +46,8 @@ const Missions = () => {
               <td>
                 {
                 mission.reserved
-                  ? <h5><Badge bg="info">Active member</Badge></h5>
-                  : <h5><Badge bg="secondary">NOT A MEMBER</Badge></h5>
+                  ? <h5 className="align-item"><Badge bg="info">Active member</Badge></h5>
+                  : <h5 className="align-item"><Badge bg="secondary">NOT A MEMBER</Badge></h5>
               }
 
               </td>
