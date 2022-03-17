@@ -1,43 +1,68 @@
 import { useEffect } from 'react';
+import {
+  Badge, Container, Table,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMission } from '../../Redux/Missions/MissionReducer';
+import Button from '../Button/Button';
+import './Missions.css';
+import { missionReserve, setMission } from '../../Redux/Missions/MissionReducer';
 
 const Missions = () => {
   const { missions } = useSelector((state) => state.missionReducer);
   const dispatch = useDispatch();
+
   useEffect(async () => {
     if (!missions.length) {
-      await dispatch(setMission());
+      dispatch(setMission());
     }
   }, []);
 
-  const arrayCheck = () => {
-    console.log(missions);
-    if (missions.length > 0) {
-      return (missions.map((mission) => (
-        <tr key={mission.id} id={mission.id}>
-          <td>{mission.name}</td>
-          <td>{mission.description}</td>
-          <td><span>NOT A MEMBER</span></td>
-          <td><button type="button">Join Mission</button></td>
-        </tr>
-      )));
-    }
-    return <tr><td>error</td></tr>;
+  const reserveHandler = (payload) => {
+    dispatch(missionReserve(payload));
   };
+
+  console.log(missions);
   return (
-    <div>
-      <table>
-        <tbody>
+    <Container>
+      <Table
+        striped
+        bordered
+        style={{
+          textAlign: 'left',
+        }}
+      >
+        <thead>
           <tr>
-            <th>Mission</th>
-            <th>Description</th>
-            <th>Status</th>
+            <th><h5>Mission</h5></th>
+            <th><h5>Description</h5></th>
+            <th><h5>Status</h5></th>
           </tr>
-          {arrayCheck()}
+        </thead>
+        <tbody style={{ alignItems: 'center' }}>
+          {(missions.map((mission) => (
+            <tr key={mission.id} id={mission.id}>
+              <td><h5>{mission.name}</h5></td>
+              <td style={{ width: '90%' }}>{mission.description}</td>
+              <td>
+                {
+                mission.reserved
+                  ? <h5 className="align-item"><Badge bg="info">Active member</Badge></h5>
+                  : <h5 className="align-item"><Badge bg="secondary">NOT A MEMBER</Badge></h5>
+              }
+
+              </td>
+              <td>
+                {
+                mission.reserved
+                  ? <Button style={{ width: '10vw' }} text="Leave Mission" click={() => { reserveHandler(mission.id); }} buttonClass="btn btn-outline-danger bg-light" />
+                  : <Button style={{ width: '10vw' }} text="Join Mission" click={() => { reserveHandler(mission.id); }} buttonClass="btn btn-outline-secondary bg-light" />
+            }
+              </td>
+            </tr>
+          )))}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </Container>
   );
 };
 export default Missions;
