@@ -4,7 +4,6 @@ import {
 import PropTypes from 'prop-types';
 
 const Profile = (props) => {
-  console.log(props);
   const { rockets } = props;
   const activeRockets = rockets.filter((rocket) => rocket.reserved === true);
   return (

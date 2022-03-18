@@ -1,12 +1,20 @@
 /* eslint-disable max-len */
 import { Container } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import rocketHooks from '../../hooks/Rockets';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getRocketsAction } from '../../Redux/Rockets/Rockets';
 import Rocket from '../Rocket/Rocket';
 
 const Rockets = () => {
   const rockets = useSelector((state) => state.rocketsReducer);
-  rocketHooks();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!rockets.length) {
+      dispatch(getRocketsAction());
+    }
+  }, []);
+
   return (
     <Container>
       {rockets.map(({
