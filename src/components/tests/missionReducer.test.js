@@ -1,4 +1,4 @@
-import missionReducer, { missionReserve } from '../../redux/Missions/MissionReducer';
+import missionReducer, { missionReserve } from '../../Redux/Missions/MissionReducer';
 
 describe('Inital state of the reducer', () => {
   test('test intial state: ', () => {
