@@ -40,7 +40,8 @@ To explore or play with this code you should :
 
 ## Mauro Vasconcelos
 
-- GitHub: [@vanillainanutshell](https://github.com/denscholar)
+- GitHub: [@vanillainanutshell](https://github.com/vanillainanutshell)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/vanillainanutshell)
 
 ## Contributing
 

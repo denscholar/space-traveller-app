@@ -2,8 +2,11 @@ import {
   Table, Container, Col, Row,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 const Profile = (props) => {
+  const missionList = useSelector((state) => state.missionReducer.missions);
+  const reservedMissions = missionList.filter((mission) => mission.reserved);
   const { rockets } = props;
   const activeRockets = rockets.filter((rocket) => rocket.reserved === true);
   return (
@@ -12,7 +15,15 @@ const Profile = (props) => {
         <Col>
           <h2>My Missions</h2>
           <Table bordered>
-            <tbody />
+            <tbody>
+              {reservedMissions.map((mission) => (
+                <tr key={mission.id}>
+                  <td>
+                    {mission.name}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </Table>
         </Col>
         <Col>

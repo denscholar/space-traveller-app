@@ -1,9 +1,9 @@
-/* .btn {
-  width: 8vw;
+.missionbtn {
+  width: 8vw !important;
   padding: 0.5rem !important;
-} */
+}
 
-.align-item {
+.align-middle {
   top: 50%;
   left: 50%;
 }

@@ -1,0 +1,55 @@
+.nav-container {
+  border-bottom: 1px solid rgb(80, 79, 79);
+  margin: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  font-size: 1.5rem;
+}
+
+.nav-list li {
+  list-style: none;
+}
+
+.nav-list a {
+  text-decoration: none;
+  list-style: none;
+  color: deepskyblue;
+}
+
+.nav-list a.active {
+  text-decoration: underline;
+}
+.nav-list>li{
+  margin-top: 1.4rem;
+  font-size: 1.3rem;
+}
+.nav-logo{
+  margin-bottom: 1.5rem;
+  display:flex;
+  justify-content: flex-start;
+}
+.nav-logo>h1 { 
+  text-align: left;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+
+}
+.vl{
+  border-left: 2px solid black;
+  height: 1.5rem;
+  margin-top: 1.5rem;
+}
+.logo{
+  background-image: url(planet.png);
+  width: 5rem;
+  height: 5rem;
+  background-size: contain;
+  
+}
