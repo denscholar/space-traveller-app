@@ -26,30 +26,33 @@
 .nav-list a.active {
   text-decoration: underline;
 }
-.nav-list>li{
+
+.nav-list > li {
   margin-top: 1.4rem;
   font-size: 1.3rem;
 }
-.nav-logo{
+
+.nav-logo {
   margin-bottom: 1.5rem;
-  display:flex;
+  display: flex;
   justify-content: flex-start;
 }
-.nav-logo>h1 { 
+
+.nav-logo > h1 {
   text-align: left;
   padding-top: 0.5rem;
   padding-left: 1rem;
-
 }
-.vl{
+
+.vl {
   border-left: 2px solid black;
   height: 1.5rem;
   margin-top: 1.5rem;
 }
-.logo{
+
+.logo {
   background-image: url(planet.png);
   width: 5rem;
   height: 5rem;
   background-size: contain;
-  
 }
