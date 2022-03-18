@@ -21,7 +21,6 @@ const Missions = () => {
     dispatch(missionReserve(payload));
   };
 
-  console.log(missions);
   return (
     <Container>
       <Table
@@ -43,19 +42,19 @@ const Missions = () => {
             <tr key={mission.id} id={mission.id}>
               <td><h5>{mission.name}</h5></td>
               <td style={{ width: '90%' }}>{mission.description}</td>
-              <td>
+              <td className="align-middle">
                 {
                 mission.reserved
-                  ? <h5 className="align-item"><Badge bg="info">Active member</Badge></h5>
-                  : <h5 className="align-item"><Badge bg="secondary">NOT A MEMBER</Badge></h5>
+                  ? <Badge bg="info">Active member</Badge>
+                  : <Badge bg="secondary">NOT A MEMBER</Badge>
               }
 
               </td>
-              <td>
+              <td className="align-middle">
                 {
                 mission.reserved
-                  ? <Button style={{ width: '10vw' }} text="Leave Mission" click={() => { reserveHandler(mission.id); }} buttonClass="btn btn-outline-danger bg-light" />
-                  : <Button style={{ width: '10vw' }} text="Join Mission" click={() => { reserveHandler(mission.id); }} buttonClass="btn btn-outline-secondary bg-light" />
+                  ? <Button id="missionLeave" style={{ width: '10vw' }} text="Leave Mission" click={() => { reserveHandler(mission.id); }} buttonClass="missionbtn btn btn-outline-danger bg-light" />
+                  : <Button id="missionoin" style={{ width: '10vw' }} text="Join Mission" click={() => { reserveHandler(mission.id); }} buttonClass="missionbtn btn btn-outline-secondary bg-light" />
             }
               </td>
             </tr>

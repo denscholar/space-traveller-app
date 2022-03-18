@@ -19,7 +19,9 @@
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "no-shadow": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "react/no-unescaped-entities": "off",
+    "no-unescaped-entities": "off"
   },
   "ignorePatterns": [
     "dist/",
