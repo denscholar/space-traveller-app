@@ -3,7 +3,6 @@ import {
   Badge, Container, Table,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../Button/Button';
 import './Missions.css';
 import { missionReserve, setMission } from '../../Redux/Missions/MissionReducer';
 
@@ -53,8 +52,8 @@ const Missions = () => {
               <td className="align-middle">
                 {
                 mission.reserved
-                  ? <Button id="missionLeave" style={{ width: '10vw' }} text="Leave Mission" click={() => { reserveHandler(mission.id); }} buttonClass="missionbtn btn btn-outline-danger bg-light" />
-                  : <Button id="missionoin" style={{ width: '10vw' }} text="Join Mission" click={() => { reserveHandler(mission.id); }} buttonClass="missionbtn btn btn-outline-secondary bg-light" />
+                  ? <button label="Leave Mission" type="button" id="missionLeave" style={{ width: '10vw' }} onClick={() => { reserveHandler(mission.id); }} className="missionbtn btn btn-outline-danger bg-light">Leave Mission</button>
+                  : <button label="Join Mission" type="button" id="missionoin" style={{ width: '10vw' }} onClick={() => { reserveHandler(mission.id); }} className="missionbtn btn btn-outline-secondary bg-light">Join Mission</button>
             }
               </td>
             </tr>

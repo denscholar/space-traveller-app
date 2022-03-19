@@ -1,6 +1,6 @@
 import {
   rocketsReducer, getRocketsAction, reserveRocketAction, cancelRocketAction,
-} from './Rockets';
+} from '../Redux/Rockets/Rockets';
 
 describe('Rockets reducer', () => {
   const list = [
